@@ -1,0 +1,118 @@
+<!-- pages/profile.html -->
+
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="profile-info">
+    {% if profile %}
+        <div class="prof center">
+            <div class="profile-img-container">
+                <div onClick="this.style.display='none';" style="display: none;" id="pp" class="overlay">
+                    <div>
+                        <div><button id"up_pp">change</button></div>
+                        <div><button id"v_pp">view</button></div>
+                        <div hidden id="pl"><form method="post" enctype="multipart/form-data">{% csrf_token %}<input label="up" value="upload" id="pp" name="pp" type="file"></form></div>
+                    </div>
+                </div>
+                <span onClick="var ch= document.getElementById('pp'); if(ch.style.display =='none'){ch.style.display='block';}else{ch.style.display='none'} "><img {% if profile.profile_image %} src={{profile.profile_image.url}} {% else %} src={% static 'image/default.png' %} {% endif %}></img></span>
+            </div>
+            <h1>{{ profile.user }}</h1>
+        </div>
+        <div class="left">
+            <p>{{ profile.date_created }}</p>
+        </div>
+        <div class="container form-container">
+            <div class="companions right">
+                {% if profile.companian.all %}
+                    {% for com in profile.companian.all %}
+                        <a class="lnk" href="{% url 'profile' com.id %}"><div> @ {{ com }}</div></a>
+                    {% endfor %}
+                {% elif profile.user == user %}
+                    <a class="lnk" href="{% url 'profiles' %}"><div>Compane Someone</div></a>
+                {% else %}
+                    <a class="lnk"><div>Not compane by anyone</div></a>
+                {% endif %}
+            </div>
+            <div class="center">
+                {% if user == profile.user %}
+                    <div class="fmr">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div>
+                                {{ form.body.label_tag }}
+                                {{ form.body }}
+                            </div>
+                            <div>
+                            <label for="id_file" class="custom-file-upload">
+                                <span>Choose File</span>
+                                {{ form.file }}
+                            </label>
+                            </div>
+                            <div>
+                                <button type="submit">Post Lekh</button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
+                <div>
+                    {% if lekhs %}
+                        {% for lekh in lekhs %}
+                            <div class="lekh" data-lekh-id="{{ lekh.id }}">
+                                <div class="profile"><a class="center lnk" href="{% url 'profile' lekh.profile.id %}">
+                                    {% if lekh.profile.profile_image %}
+                                        <img class="index_pp" src={{ lekh.profile.profile_image.url }}></img>
+                                    {% else %}
+                                        <img class="index_pp" src={% static 'image/default.png' %}></img>
+                                    {% endif %}
+                                    <span>{{ lekh.profile }}</span>
+                                </a></div>
+                                <div class="body"><a class="lnk" href="{% url 'lekh_view' lekh.id %}">{{ lekh.body }}</a></div>
+                                {% if lekh.file %}
+                                    <div><a class="lnk" href="{% url 'lekh_view' lekh.id %}">
+                                        <img style="width: 100%;" src={{ lekh.file.url }}></img></a>
+                                    </div>
+                                {% endif %}
+                                <div class="date">{{ lekh.date_created }}</div>
+                                <div class="lake_a">
+                                    <div class="likes lake_b">
+                                        <i {% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}id="unlike"{% else %}id="like"{% endif %} class="fa fa-thumbs-up lake"></i>
+                                        <span id="no_of_likes" class"like_lab lake" style="padding-right: 11px;">{{ lekh.no_of_likes }} Likes</span>
+                                        <button hidden class="like-button lake">Like</button>
+                                    </div>
+                                    <a class="lnk" href="{% url 'lekh_view' lekh.id %}"><div class="leka lake_a likes lake lake_b ">
+                                        <span>
+                                            <i onClick="" class="gg-comment cmt"></i>
+                                        </span>
+                                        <span class="lake la_s"> Comment</span>
+                                    </div></a>
+                                    {% if lekh.profile.user == user %}
+                                        <div id="cl_rm" class="leka lake_a likes lake lake_b ">
+                                            <span>
+                                                <i class="glyphicon glyphicon-trash ic_sz"></i>
+                                            </span>
+                                            <span class="lake la_s"> Delete</span>
+                                        </div>
+                                        <div style="display: none;" class="overlay">
+                                            <div>
+                                                <div><button id"rm_c">cancel</button></div>
+                                                <div><button id"rm_o">ok</button></div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <div class="leka lake_a likes lake lake_b ">
+                                        <span>
+                                            <i id="l_shr" class="glyphicon glyphicon-share-alt"></i>
+                                        </span>
+                                        <span class="lake la_s">Share</sapn>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

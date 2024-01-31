@@ -1,0 +1,283 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+/* Style for the container */
+.custom-file-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Style for the file input */
+.custom-file-upload input[type="file"] {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+/* Style for the label text */
+.custom-file-upload span {
+    display: inline-block;
+    background: brown;
+    color: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Hover effect for the label */
+.custom-file-upload:hover span {
+    background: #45a049;
+}
+
+.navi {
+    background-color: #333;
+    overflow: hidden;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navi a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.navi a:hover {
+    background-color: #555;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-form input[type="text"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #0056b3;
+}
+
+.acti {
+    display: flex;
+    align-items: center;
+}
+
+.signout a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.signout a:hover {
+    background-color: #555;
+}
+
+.index_pp {
+    width: 30px; /* Adjust the size of the profile image as needed */
+    height: 30px;
+    border-radius: 50%; /* Make it circular */
+    object-fit: cover; /* Maintain aspect ratio without stretching */
+}
+
+.index_pp:hover {
+    border: 2px solid #007bff;
+}
+/* Add these styles to your existing style.css */
+
+.index_pp-container {
+    display: flex;
+    align-items: center;
+}
+
+.index_pp {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff; /* Add a border around the image */
+}
+
+.index_pp:hover {
+    border-color: #007bff; /* Change border color on hover */
+}
+.container {
+    margin: 20px;
+}
+
+form {
+    margin-top: 11px;
+    margin-bottom: 27px;
+}
+
+.lekh {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 21px;
+    max-width: 600px; /* Set a maximum width for the content inside .body */
+    margin: 7px auto; /* Center the content horizontally */
+    overflow-wrap: break-word; /* Wrap long words to prevent overflow */
+    text-align: left;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 11px 0 rgba(0, 0, 0, 0.19);
+}
+
+.lekh .profile {
+    font-weight: bold;
+}
+
+.lekh .body {
+    margin-top: 21px;
+    
+}
+
+.lekh .date {
+    margin-top: 13px;
+    color: #888;
+    font-size: 13px;
+}
+
+.lekh .likes {
+    margin-top: 5px;
+    color: #888;
+    font-size: 13px;
+}
+.center {
+    margin: 0 auto;
+    text-align: center;
+}
+.right {
+    float: right;
+}
+.left {
+    float: left;
+}
+.companions {
+    float: right;
+    /* Add more styles as needed */
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 11px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
+}
+
+.companions div {
+    background-color: #f2f2f2; /* Example background color */
+    padding: 10px; /* Example padding */
+    margin-bottom: 10px; /* Example margin */
+    border-radius: 5px; /* Example border radius for rounded corners */
+    /* Add other styles as needed */
+}
+.prof {
+    background-color: silver;
+    padding: 50px;
+}
+.fa {
+    font-size:27px;
+    cursor: pointer;
+    user-select: none;
+}
+.prof h1 {
+    margin-bottom: 0; /* Remove default margin */;
+    margin-top: 9px;
+}
+.prof {
+    background-color: silver;
+    padding: 20px; /* Decrease padding */
+    text-align: center;
+}
+
+.profile-img-container {
+    width: 100%; /* Make the container fill the width of .prof */
+    overflow: hidden;
+}
+
+.profile-img-container img {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 30%;
+}
+
+.pimg {
+    border-radius: 50%;
+    width: 8%;
+}
+.lake_a{
+    display: flex;
+}
+.lake {
+    padding : 2px;
+    padding-left: 2px;
+}
+.lake_b {
+    border: 1px solid #ddd;
+}
+.la_s {
+    margin-bottom: 0;
+    padding-top: 9px;
+    padding-right: 11px;
+    padding-left: 5px
+}
+
+.cmt {
+    margin: 3px;
+}
+.lnk {
+    text-decoration: none;
+    color: #333;
+}
+.lnk:hover {
+    text-decoration: none;
+    color: #333;
+}
+
+.index_pp_container {
+    text-align: justify;
+}
+.glyphicon {
+    top: 4px;
+    font-size: 18px;
+}
+.fmr {
+    display: flex;
+    justify-content: center;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Adjust the alpha value for transparency */
+    display: none; /* Initially hide the overlay */
+    z-index: 999; /* Adjust the z-index to ensure it overlays other elements */
+}
+.profiles {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}

@@ -1,0 +1,45 @@
+{% block content %}
+
+{% if messages %}
+<div class="success-message">
+    {% for message in messages %}
+    <div>
+        <p class="success">{{ message }}</p>
+    </div>
+
+        {% if message.tags == "success" %}
+        <div>
+            <a href={% url 'signin' %}>signin</a>
+        </div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="input_signup">
+        <div>
+            {{form.username.label}}
+            {{form.username}}
+        </div>
+    </div>
+    <div class="input_signup">
+        <div>
+            {{form.password1.label}}
+            {{form.password1}}
+        </div>
+        <div>    
+            {{form.password2.label}}
+            {{form.password2}}
+        </div>
+    </div>
+    {% if form %}
+        <div>
+            <button type="submit">signup</button>
+        </div>
+    {% endif %}
+    
+</form>
+
+{% endblock %}

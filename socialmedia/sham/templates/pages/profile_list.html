@@ -1,0 +1,38 @@
+<!-- pages/profile.html -->
+
+{% extends 'pages/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container center">
+    <h1>Profile</h1>
+    <div class="profiles">
+        {% if profiles %}
+            {% for profile in profiles %}
+                <div class="companions">
+                    <div>
+                        <div class="profile" id="{{profile.id}}"><a class="center lnk" href="{% url 'profile' profile.id %}">
+                            {% if lekh.profile.profile_image %}
+                                <img class="index_pp" src={{ lekh.profile.profile_image.url }}></img>
+                            {% else %}
+                                <img class="index_pp" src={% static 'image/default.png' %}></img>
+                            {% endif %}
+                            <span> @{{ profile }}</span></a>
+                            <div class="right">
+                                <button id="comp" class="compan">
+                                    {% if profile in request.user.profile_set.first.companian.all %}
+                                    Uncompane
+                                    {% else %}
+                                    Compane
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div> 
+</div>
+{% endblock %}

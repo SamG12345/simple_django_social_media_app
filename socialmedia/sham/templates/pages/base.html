@@ -1,0 +1,46 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src={% static 'js/script.js' %}></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/comment.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="navi">
+        <div>
+            <a href="{% url 'index' %}">Home</a>
+        </div>
+        <div>
+            <a href="{% url 'profiles' %}">Profiles</a>
+        </div>
+        <div class="search-form">
+            <form class="search_ing" method="post" action={% url 'search' %}>
+                {% csrf_token %}
+                <input class="search_inp" type="text" placeholder="Search" name="search">
+                <button class="search-btn" type="submit">Search</button>
+            </form>
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="acti">
+                <div class='signout'>
+                    <a href="{% url 'signout' %}">Logout</a>
+                </div>
+            </div>
+        {% endif %}
+        <div class="index_pp-container">
+            <a href="{% url 'profile' request.user.profile_set.first.id %}">
+                <img class="index_pp" {% if profile.profile_image %}src="{{profile.profile_image.url}}" alt="Profile Image" {% elif request.user.profile_set.first.profile_image %}src="{{request.user.profile_set.first.profile_image.url}}" alt="Profile Image" {% else %}src="{% static 'image/default.png' %}" alt="Default Image"{% endif %}>
+            </a>
+        </div>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+</body>
+
+</html>
