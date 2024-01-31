@@ -1,8 +1,4 @@
 
-source virtu/bin/activate
-
-python3 -m pip install
-
 # Install requirements
 python3 -m pip install -r requirements.txt
 
